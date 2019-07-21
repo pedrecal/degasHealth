@@ -36,7 +36,7 @@ public class Medicos {
 		};
 
 		if(existingCRM(crm)) {
-			return "ERRO! CRM J� existente!";
+			return "ERRO! CRM Já existente!";
 		}
 		
 		Date dtAdmissaoDate, dtFormaturaDate, dtNascDate;
@@ -45,19 +45,19 @@ public class Medicos {
 		dtFormaturaDate = strToDate(dtFormatura);
 		dtNascDate = strToDate(dtNasc);
 		if (dtAdmissaoDate==null) {
-			return "ERRO! Data Inv�lida!";
+			return "ERRO! Data Inválida!";
 		}
 		
 		if (dtFormaturaDate==null) {
-			return "ERRO! Data Inv�lida!";
+			return "ERRO! Data Inválida!";
 		}
 		
 		if (dtNascDate==null) {
-			return "ERRO! Data Inv�lida!";
+			return "ERRO! Data Inválida!";
 		}
 		
 		if (dateBeforeError(dtFormaturaDate, dtAdmissaoDate)) {
-			return "ERRO! Inconsistencia de datas: Formatura posterior a admiss�o!";
+			return "ERRO! Inconsistencia de datas: Formatura posterior a admissão!";
 		}
 
 		Medico medico = new Medico(nome, sexo, crm, nacionalidade, dtNascDate,
@@ -126,13 +126,13 @@ public class Medicos {
 				return "Alteracao executada com sucesso!";
 			case "DtAdmiss":
 				if (dateBeforeError(listaMedicos.get(id).getDtFormatura(), DateUtils.createDateFromString(novoValor))) {
-					return "ERRO! Inconsistencia de datas: Formatura posterior a admiss�o!";
+					return "ERRO! Inconsistencia de datas: Formatura posterior a admissão!";
 				}
 				listaMedicos.get(id).setDtAdmissao(DateUtils.createDateFromString(novoValor));
 				return "Alteracao executada com sucesso!";
 			case "DtFormatura":
 				if (dateBeforeError(DateUtils.createDateFromString(novoValor), listaMedicos.get(id).getDtAdmissao())) {
-					return "ERRO! Inconsistencia de datas: Formatura posterior a admiss�o!";
+					return "ERRO! Inconsistencia de datas: Formatura posterior a admissão!";
 				}
 				listaMedicos.get(id).setDtFormatura(DateUtils.createDateFromString(novoValor));
 				return "Alteracao executada com sucesso!";
