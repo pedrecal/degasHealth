@@ -83,8 +83,8 @@ public class TesteAceitacao1 {
 		res = facade.encontraMedico("Nardelle Moraes");
 		assertEquals("Nardelle Moraes%M%97719%Brasil%26/08/1977%29/06/2012%28/01/2007", res);
 
-//		res = facade.encontraMedico("36311");
-//		assertEquals("Larissa Pereira%F%36311%Brasil%22/01/1977%13/08/2005%07/11/1999", res);
+		res = facade.encontraMedico("36311");
+		assertEquals("Larissa Pereira%F%36311%Brasil%22/01/1977%13/08/2005%07/11/1999", res);
 //
 //		res = facade.alteraMedico("97719","Nome", "Jose Ferreira");
 //		assertEquals("Alteracao executada com sucesso!", res);

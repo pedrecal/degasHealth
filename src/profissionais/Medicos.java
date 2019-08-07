@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import utils.DateUtils;
 import profissionais.Medico;
 
 public class Medicos {
@@ -86,7 +87,7 @@ public class Medicos {
 		}
 		if(medicoResult != null) {
 			return(medicoResult.getNome()+"%"+medicoResult.getSexo()+"%"+medicoResult.getCrm()
-			+"%"+medicoResult.getNacionalidade()+"%"+medicoResult.getDtNasc()+"%"+medicoResult.getDtAdmissao()+"%"+medicoResult.getDtFormatura());
+			+"%"+medicoResult.getNacionalidade()+"%"+DateUtils.formatDateBR(medicoResult.getDtNasc())+"%"+DateUtils.formatDateBR(medicoResult.getDtAdmissao())+"%"+DateUtils.formatDateBR(medicoResult.getDtFormatura()));
 		}else {
 			return "Medico não cadastrado";
 		}
