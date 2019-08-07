@@ -28,5 +28,9 @@ public class Facade {
 	public String encontraMedico(String atributo) {
 		return medicos.encontraMedico(atributo);
 	}
+	
+	public String alteraMedico(String crm, String coluna, String novoValor) {
+		return medicos.alteraMedico(crm, coluna, novoValor);
+	}
 
 }

@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.xml.crypto.Data;
+
 import utils.DateUtils;
 import profissionais.Medico;
 
@@ -91,6 +93,52 @@ public class Medicos {
 		}else {
 			return "Medico não cadastrado";
 		}
+	}
+	
+	public String alteraMedico(String crm, String coluna, String novoValor) {
+		for (Medico medico : listaMedicos) {
+			if(medico.getCrm().equals(crm)) {
+				return alteraAtributo(listaMedicos.indexOf(medico), coluna, novoValor);
+			}
+		}
+		
+		return "Médico não encontrado";
+		
+	}
+	
+	public String alteraAtributo(int id, String coluna, String novoValor){
+		
+		switch(coluna) {
+			case "Nome":
+				listaMedicos.get(id).setNome(novoValor);
+				return "Alteracao executada com sucesso!";
+				
+			case "Sexo":
+				listaMedicos.get(id).setSexo(novoValor);
+				return "Alteracao executada com sucesso!";
+				
+			case "Nacionalidade":
+				listaMedicos.get(id).setNacionalidade(novoValor);
+				return "Alteracao executada com sucesso!";
+				
+			case "DtNasc":
+				listaMedicos.get(id).setDtNasc( DateUtils.createDateFromString(novoValor));
+				return "Alteracao executada com sucesso!";
+			case "DtAdmiss":
+				if (dateBeforeError(listaMedicos.get(id).getDtFormatura(), DateUtils.createDateFromString(novoValor))) {
+					return "ERRO! Inconsistencia de datas: Formatura posterior a admiss�o!";
+				}
+				listaMedicos.get(id).setDtAdmissao(DateUtils.createDateFromString(novoValor));
+				return "Alteracao executada com sucesso!";
+			case "DtFormatura":
+				if (dateBeforeError(DateUtils.createDateFromString(novoValor), listaMedicos.get(id).getDtAdmissao())) {
+					return "ERRO! Inconsistencia de datas: Formatura posterior a admiss�o!";
+				}
+				listaMedicos.get(id).setDtFormatura(DateUtils.createDateFromString(novoValor));
+				return "Alteracao executada com sucesso!";
+		}
+		
+		return "Medico náo encontrado!";
 	}
 
 	/**
