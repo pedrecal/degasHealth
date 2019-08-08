@@ -229,105 +229,109 @@ public class TesteAceitacao2 {
 
 			//COREN -> Conselho Regional de Enfermagem. O mesmo serve para Auxiliar de Enfermagem ou Técnico de Enfermagem.
 			//novoAuxiliar: Nome, Sexo, COREN, Nacionalidade, Data Nasc., Data Admiss., Data Formatura
+			
+
+			res = facade.novoAuxiliar("Augusta Rua","M","297719","Brasil","24/02/1969","29/12/2016","28/06/2015");
+			assertEquals("Auxiliar/Técnico inserido!", res);
+
+			res = facade.novoAuxiliar("Bárbara%  Leonel","F","251329","Brasil","18/10/1971","22/01/1999","18/05/1990");
+			assertEquals("ERRO! Caracter '%' Invalido!", res);
+
+			res = facade.novoAuxiliar("Cêcharpe L#dligues","M","251329","Brasil","28/11/1961","22/01/1992","18/05/1988");
+			assertEquals("ERRO! Caracter '#' Invalido!", res);
+
+			res = facade.novoAuxiliar("Dalva Branquinha Alves","F","251329","Br@sil","24/06/1981","22/01/2012","18/05/2000");
+			assertEquals("ERRO! Caracter '@' Invalido!", res);
+
+			res = facade.novoAuxiliar("Elie%e  dos Ponteiros","F","251329","Br@sil","03/06/1991","22/06/2017","18/05/2017");
+			assertEquals("ERRO! Caracter '%' Invalido!", res);
+
+			res = facade.novoAuxiliar("Fabíola do C#menor","M","251329","Br@sil","28/11/1961","23/09/1991","28/08/1988");
+			assertEquals("ERRO! Caracter '#' Invalido!", res);
+
+			res = facade.novoAuxiliar("Galinda C@xaqt#","F","251329","Brasil","18/11/1962","22/01/1992","18/05/1988");
+			assertEquals("ERRO! Caracter '@' Invalido!", res);
+
+			res = facade.novoAuxiliar("Hermitão da Gruta Longe","M","251329","Brasil","28/11/1962","22/01/1992","18/05/1988");
+			assertEquals("Auxiliar/Técnico inserido!", res);
+
+			res = facade.novoAuxiliar("Ivan da Van Dutch","M","251329","Brasil","28/11/1961","22/01/1992","18/105/1988");
+			assertEquals("ERRO! COREN Já existente!", res);
+
+			res = facade.novoAuxiliar("Jileno da Lamina Cega","M","29614","Brasil","26/01/1970","04/04/1999","02/05/1995");
+			assertEquals("Auxiliar/Técnico inserido!", res);
+
+			res = facade.novoAuxiliar("Lucas Bolseiro","M","29614","Brasil","26/03/1970","04/02/1999","02/10/1995");
+			assertEquals("ERRO! COREN Já existente!", res);
+
+			res = facade.novoAuxiliar("Maria do Bairro","F","236311","Brasil","22/07/1976","13/08/2005","07/05/1999");
+			assertEquals("Auxiliar/Técnico inserido!", res);
 
 
-//			res = facade.novoAuxiliar("Augusta Rua","M","297719","Brasil","24/02/1969","29/12/2016","28/06/2015");
-//			assertEquals("Auxiliar/Técnico inserido!", res);
-//
-//			res = facade.novoAuxiliar("Bárbara%  Leonel","F","251329","Brasil","18/10/1971","22/01/1999","18/05/1990");
-//			assertEquals("ERRO! Caracter '%' Invalido!", res);
-//
-//			res = facade.novoAuxiliar("Cêcharpe L#dligues","M","251329","Brasil","28/11/1961","22/01/1992","18/05/1988");
-//			assertEquals("ERRO! Caracter '#' Invalido!", res);
-//
-//			res = facade.novoAuxiliar("Dalva Branquinha Alves","F","251329","Br@sil","24/06/1981","22/01/2012","18/05/2000");
-//			assertEquals("ERRO! Caracter '@' Invalido!", res);
-//
-//			res = facade.novoAuxiliar("Elie%e  dos Ponteiros","F","251329","Br@sil","03/06/1991","22/06/2017","18/05/2017");
-//			assertEquals("ERRO! Caracter '%' Invalido!", res);
-//
-//			res = facade.novoAuxiliar("Fabíola do C#menor","M","251329","Br@sil","28/11/1961","23/09/1991","28/08/1988");
-//			assertEquals("ERRO! Caracter '#' Invalido!", res);
-//
-//			res = facade.novoAuxiliar("Galinda C@xaqt#","F","251329","Brasil","18/11/1962","22/01/1992","18/05/1988");
-//			assertEquals("ERRO! Caracter '@' Invalido!", res);
-//
-//			res = facade.novoAuxiliar("Hermitão da Gruta Longe","M","251329","Brasil","28/11/1962","22/01/1992","18/05/1988");
-//			assertEquals("Auxiliar/Técnico inserido!", res);
-//
-//			res = facade.novoAuxiliar("Ivan da Van Dutch","M","251329","Brasil","28/11/1961","22/01/1992","18/105/1988");
-//			assertEquals("ERRO! COREN Já existente!", res);
-//
-//			res = facade.novoAuxiliar("Jileno da Lamina Cega","M","29614","Brasil","26/01/1970","04/04/1999","02/05/1995");
-//			assertEquals("Auxiliar/Técnico inserido!", res);
-//
-//			res = facade.novoAuxiliar("Lucas Bolseiro","M","29614","Brasil","26/03/1970","04/02/1999","02/10/1995");
-//			assertEquals("ERRO! COREN Já existente!", res);
-//
-//			res = facade.novoAuxiliar("Maria do Bairro","F","236311","Brasil","22/07/1976","13/08/2005","07/05/1999");
-//			assertEquals("Auxiliar/Técnico inserido!", res);
-//
-//
-//			res = facade.novoAuxiliar("Naiara Cinquenta","F","21566","Tchéquia","07/10/1988","28/09/2016","22/06/2012");
-//			assertEquals("Auxiliar/Técnico inserido!", res);
-//
-//			res = facade.novoAuxiliar("Olimpo Luz do Panteão Divino ","M","21566","Brasil","05/12/1989","28/03/2017","22/06/2012");
-//			assertEquals("ERRO! COREN Já existente!", res);
-//
+			res = facade.novoAuxiliar("Naiara Cinquenta","F","21566","Tchéquia","07/10/1988","28/09/2016","22/06/2012");
+			assertEquals("Auxiliar/Técnico inserido!", res);
+
+			res = facade.novoAuxiliar("Olimpo Luz do Panteão Divino ","M","21566","Brasil","05/12/1989","28/03/2017","22/06/2012");
+			assertEquals("ERRO! COREN Já existente!", res);
+
 //			res = facade.novoAuxiliar("Pablo Bardo da Sofrência Boêmio","M","289673","Brasil","12/10/1984","31/10/2013","05/01/2011");
+			//Teste espera data invalida porém todas as datas estão certas.
 //			assertEquals("ERRO! Data Inválida!", res);
-//
+
 //			res = facade.novoAuxiliar("Quincas Borba","M","289673","Brasil","12/10/1983","30/10/2012","05/01/2011");
+			//Teste espera data invalida porém todas as datas estão certas.
 //			assertEquals("ERRO! Data Inválida!", res);
-//
-//			res = facade.novoAuxiliar("Rubens Paiva","M","289673","Brasil","12/02/1984","31/3/2011","05/07/2013");
-//			assertEquals("ERRO! Inconsistencia de datas: Formatura posterior a admissão!", res);
-//
-//			res = facade.novoAuxiliar("Sábado de Sol Silva","M","289673","Brasil","12/08/1984","30/11/2013","05/01/2011");
-//			assertEquals("Auxiliar/Técnico inserido!", res);
-//
-//			res = facade.encontraAuxiliar("Augusta Rua");
-//			assertEquals("Augusta Rua%M%297719%Brasil%24/02/1969%29/12/2016%28/06/2015", res);
-//
-//			res = facade.encontraAuxiliar("251329");
-//			assertEquals("Hermitão da Gruta Longe%M%251329%Brasil%28/11/1962%22/01/1992%18/05/1988", res);
-//
-//
-//			res = facade.alteraAuxiliar("297719","Nome", "Arsenio Pereira da Produção Eficaz");
-//			assertEquals("Alteracao executada com sucesso!", res);
-//			res = facade.encontraAuxiliar("297719");
-//			assertEquals("Arsenio Pereira da Produção Eficaz%M%297719%Brasil%24/02/1969%29/12/2016%28/06/2015", res);
-//
-//			res = facade.alteraAuxiliar("251329","Sexo", "F");
-//			assertEquals("Alteracao executada com sucesso!", res);
-//			res = facade.encontraAuxiliar("251329");
-//			assertEquals("Hermitão da Gruta Longe%F%251329%Brasil%28/11/1962%22/01/1992%18/05/1988", res);
-//
-//			res = facade.alteraAuxiliar("29614","Nacionalidade", "Argentina");
-//			assertEquals("Alteracao executada com sucesso!", res);
-//			res = facade.encontraAuxiliar("29614");
-//			assertEquals("Jileno da Lamina Cega%M%29614%Argentina%26/01/1970%04/04/1999%02/05/1995", res);
-//
-//			res = facade.alteraAuxiliar("236311","DtNasc", "31/01/1971");
-//			assertEquals("Alteracao executada com sucesso!", res);
-//			res = facade.encontraAuxiliar("236311");
-//			assertEquals("Maria do Bairro%F%236311%Brasil%31/01/1971%13/08/2005%07/11/1999", res);
-//
-//			res = facade.alteraAuxiliar("21566","DtAdmiss", "19/02/2002");
-//			assertEquals("ERRO! Inconsistencia de datas: Formatura posterior a admissão!", res);
-//
-//			res = facade.alteraAuxiliar("21566","DtAdmiss", "19/07/2015");
-//			assertEquals("Alteracao executada com sucesso!", res);
-//			res = facade.encontraAuxiliar("21566");
-//			assertEquals("Naiara Cinquenta%F%21566%Tchéquia%07/10/1988%19/07/2015%22/06/2012", res);
-//
-//			res = facade.alteraAuxiliar("289673","DtFormatura", "30/03/2014");
-//			assertEquals("ERRO! Inconsistencia de datas: Formatura posterior a admissão!", res);
-//
-//			res = facade.alteraAuxiliar("289673","DtFormatura", "30/03/2010");
-//			assertEquals("Alteracao executada com sucesso!", res);
-//			res = facade.encontraAuxiliar("289673");
-//			assertEquals("Sábado de Sol Silva%M%289673%Brasil%12/08/1984%30/11/2013%05/01/2011", res);
+
+			res = facade.novoAuxiliar("Rubens Paiva","M","289673","Brasil","12/02/1984","31/3/2011","05/07/2013");
+			assertEquals("ERRO! Inconsistencia de datas: Formatura posterior a admissão!", res);
+
+			res = facade.novoAuxiliar("Sábado de Sol Silva","M","289673","Brasil","12/08/1984","30/11/2013","05/01/2011");
+			assertEquals("Auxiliar/Técnico inserido!", res);
+
+			res = facade.encontraAuxiliar("Augusta Rua");
+			assertEquals("Augusta Rua%M%297719%Brasil%24/02/1969%29/12/2016%28/06/2015", res);
+
+			res = facade.encontraAuxiliar("251329");
+			assertEquals("Hermitão da Gruta Longe%M%251329%Brasil%28/11/1962%22/01/1992%18/05/1988", res);
+
+
+			res = facade.alteraAuxiliar("297719","Nome", "Arsenio Pereira da Produção Eficaz");
+			assertEquals("Alteracao executada com sucesso!", res);
+			res = facade.encontraAuxiliar("297719");
+			assertEquals("Arsenio Pereira da Produção Eficaz%M%297719%Brasil%24/02/1969%29/12/2016%28/06/2015", res);
+
+			res = facade.alteraAuxiliar("251329","Sexo", "F");
+			assertEquals("Alteracao executada com sucesso!", res);
+			res = facade.encontraAuxiliar("251329");
+			assertEquals("Hermitão da Gruta Longe%F%251329%Brasil%28/11/1962%22/01/1992%18/05/1988", res);
+
+			res = facade.alteraAuxiliar("29614","Nacionalidade", "Argentina");
+			assertEquals("Alteracao executada com sucesso!", res);
+			res = facade.encontraAuxiliar("29614");
+			assertEquals("Jileno da Lamina Cega%M%29614%Argentina%26/01/1970%04/04/1999%02/05/1995", res);
+
+			res = facade.alteraAuxiliar("236311","DtNasc", "31/01/1971");
+			assertEquals("Alteracao executada com sucesso!", res);
+			res = facade.encontraAuxiliar("236311");
+			//Data errada na formatura(estava mes 11 mas foi inserido 05)
+			assertEquals("Maria do Bairro%F%236311%Brasil%31/01/1971%13/08/2005%07/05/1999", res);
+
+			res = facade.alteraAuxiliar("21566","DtAdmiss", "19/02/2002");
+			assertEquals("ERRO! Inconsistencia de datas: Formatura posterior a admissão!", res);
+
+			res = facade.alteraAuxiliar("21566","DtAdmiss", "19/07/2015");
+			assertEquals("Alteracao executada com sucesso!", res);
+			res = facade.encontraAuxiliar("21566");
+			assertEquals("Naiara Cinquenta%F%21566%Tchéquia%07/10/1988%19/07/2015%22/06/2012", res);
+
+			res = facade.alteraAuxiliar("289673","DtFormatura", "30/03/2014");
+			assertEquals("ERRO! Inconsistencia de datas: Formatura posterior a admissão!", res);
+
+			res = facade.alteraAuxiliar("289673","DtFormatura", "30/03/2010");
+			assertEquals("Alteracao executada com sucesso!", res);
+			res = facade.encontraAuxiliar("289673");
+			//Data errada na formatura(Foi alterada no teste a cima mas o assert está para a data antiga)
+			assertEquals("Sábado de Sol Silva%M%289673%Brasil%12/08/1984%30/11/2013%30/03/2010", res);
 			
 	}
 

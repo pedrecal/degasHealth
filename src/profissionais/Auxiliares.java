@@ -8,11 +8,11 @@ import java.util.Date;
 import javax.xml.crypto.Data;
 
 import utils.DateUtils;
-import profissionais.Enfermeiro;
+import profissionais.Auxiliar;
 
-public class Enfermeiros {
+public class Auxiliares {
 
-	ArrayList<Enfermeiro> listaEnfermeiros = new ArrayList<Enfermeiro>();
+	ArrayList<Auxiliar> listaAuxiliares = new ArrayList<Auxiliar>();
 
 	/**
 	 * This method inserts, if possible, a new doctor into the doctors list
@@ -26,7 +26,7 @@ public class Enfermeiros {
 	 * @param dtFormatura
 	 * @return
 	 */
-	public String novoEnfermeiro(String nome, String sexo, String coren, String nacionalidade, String dtNasc,
+	public String novoAuxiliar(String nome, String sexo, String coren, String nacionalidade, String dtNasc,
 			String dtAdmissao, String dtFormatura) {
 		char c;
 
@@ -60,45 +60,45 @@ public class Enfermeiros {
 			return "ERRO! Inconsistencia de datas: Formatura posterior a admissão!";
 		}
 
-		Enfermeiro enfermeiro = new Enfermeiro(nome, sexo, coren, nacionalidade, dtNascDate,
+		Auxiliar auxiliar = new Auxiliar(nome, sexo, coren, nacionalidade, dtNascDate,
 				dtAdmissaoDate, dtFormaturaDate);
 
-		listaEnfermeiros.add(enfermeiro);
+		listaAuxiliares.add(auxiliar);
 
-		return "Enfermeiro inserido!";
+		return "Auxiliar/Técnico inserido!";
 	}
 
-	public String encontraEnfermeiro(String atributo) {
+	public String encontraAuxiliar(String atributo) {
 		if(atributo.matches("[ ]*")) {
 			return "Atributo inválido";
 		}
-		Enfermeiro enfermeiroResult = null;
+		Auxiliar auxiliarResult = null;
 
 		if(atributo.matches("[0-9]{2,6}")) {
-			for (Enfermeiro enfermeiro : listaEnfermeiros) {
-				if(enfermeiro.getCoren() == atributo) {
-					enfermeiroResult = enfermeiro;
+			for (Auxiliar auxiliar : listaAuxiliares) {
+				if(auxiliar.getCoren() == atributo) {
+					auxiliarResult = auxiliar;
 				}
 			}
 		}else {
-			for (Enfermeiro enfermeiro : listaEnfermeiros) {
-				if(enfermeiro.getNome() == atributo) {
-					enfermeiroResult = enfermeiro;
+			for (Auxiliar auxiliar : listaAuxiliares) {
+				if(auxiliar.getNome() == atributo) {
+					auxiliarResult = auxiliar;
 				}
 			}
 		}
-		if(enfermeiroResult != null) {
-			return(enfermeiroResult.getNome()+"%"+enfermeiroResult.getSexo()+"%"+enfermeiroResult.getCoren()
-			+"%"+enfermeiroResult.getNacionalidade()+"%"+DateUtils.formatDateBR(enfermeiroResult.getDtNasc())+"%"+DateUtils.formatDateBR(enfermeiroResult.getDtAdmissao())+"%"+DateUtils.formatDateBR(enfermeiroResult.getDtFormatura()));
+		if(auxiliarResult != null) {
+			return(auxiliarResult.getNome()+"%"+auxiliarResult.getSexo()+"%"+auxiliarResult.getCoren()
+			+"%"+auxiliarResult.getNacionalidade()+"%"+DateUtils.formatDateBR(auxiliarResult.getDtNasc())+"%"+DateUtils.formatDateBR(auxiliarResult.getDtAdmissao())+"%"+DateUtils.formatDateBR(auxiliarResult.getDtFormatura()));
 		}else {
-			return "Enfermeiro não cadastrado";
+			return "Auxiliar não cadastrado";
 		}
 	}
 
-	public String alteraEnfermeiro(String coren, String coluna, String novoValor) {
-		for (Enfermeiro enfermeiro : listaEnfermeiros) {
-			if(enfermeiro.getCoren().equals(coren)) {
-				return alteraAtributo(listaEnfermeiros.indexOf(enfermeiro), coluna, novoValor);
+	public String alteraAuxiliar(String coren, String coluna, String novoValor) {
+		for (Auxiliar auxiliar : listaAuxiliares) {
+			if(auxiliar.getCoren().equals(coren)) {
+				return alteraAtributo(listaAuxiliares.indexOf(auxiliar), coluna, novoValor);
 			}
 		}
 
@@ -110,35 +110,35 @@ public class Enfermeiros {
 
 		switch(coluna) {
 			case "Nome":
-				listaEnfermeiros.get(id).setNome(novoValor);
+				listaAuxiliares.get(id).setNome(novoValor);
 				return "Alteracao executada com sucesso!";
 
 			case "Sexo":
-				listaEnfermeiros.get(id).setSexo(novoValor);
+				listaAuxiliares.get(id).setSexo(novoValor);
 				return "Alteracao executada com sucesso!";
 
 			case "Nacionalidade":
-				listaEnfermeiros.get(id).setNacionalidade(novoValor);
+				listaAuxiliares.get(id).setNacionalidade(novoValor);
 				return "Alteracao executada com sucesso!";
 
 			case "DtNasc":
-				listaEnfermeiros.get(id).setDtNasc( DateUtils.createDateFromString(novoValor));
+				listaAuxiliares.get(id).setDtNasc( DateUtils.createDateFromString(novoValor));
 				return "Alteracao executada com sucesso!";
 			case "DtAdmiss":
-				if (dateBeforeError(listaEnfermeiros.get(id).getDtFormatura(), DateUtils.createDateFromString(novoValor))) {
+				if (dateBeforeError(listaAuxiliares.get(id).getDtFormatura(), DateUtils.createDateFromString(novoValor))) {
 					return "ERRO! Inconsistencia de datas: Formatura posterior a admissão!";
 				}
-				listaEnfermeiros.get(id).setDtAdmissao(DateUtils.createDateFromString(novoValor));
+				listaAuxiliares.get(id).setDtAdmissao(DateUtils.createDateFromString(novoValor));
 				return "Alteracao executada com sucesso!";
 			case "DtFormatura":
-				if (dateBeforeError(DateUtils.createDateFromString(novoValor), listaEnfermeiros.get(id).getDtAdmissao())) {
+				if (dateBeforeError(DateUtils.createDateFromString(novoValor), listaAuxiliares.get(id).getDtAdmissao())) {
 					return "ERRO! Inconsistencia de datas: Formatura posterior a admissão!";
 				}
-				listaEnfermeiros.get(id).setDtFormatura(DateUtils.createDateFromString(novoValor));
+				listaAuxiliares.get(id).setDtFormatura(DateUtils.createDateFromString(novoValor));
 				return "Alteracao executada com sucesso!";
 		}
 
-		return "Enfermeiro náo encontrado!";
+		return "Auxiliar náo encontrado!";
 	}
 
 	/**
@@ -174,12 +174,12 @@ public class Enfermeiros {
 	}
 
 	/**
-	 * This method checks if the coren is alrady inserted into enfermeiroslist
+	 * This method checks if the coren is alrady inserted into auxiliareslist
 	 * @param coren
 	 * @return
 	 */
 	protected boolean existingCOREN(String coren) {
-		for (Enfermeiro m : listaEnfermeiros) {
+		for (Auxiliar m : listaAuxiliares) {
 			if(coren.equals(m.getCoren())) {
 				return true;
 			}

@@ -2,7 +2,7 @@ package profissionais;
 
 import java.util.Date;
 
-public class Enfermeiro {
+public class Auxiliar {
 
 	public String getNome() {
 		return nome;
@@ -48,7 +48,7 @@ public class Enfermeiro {
 	private Date dtFormatura;
 
 
-	public Enfermeiro(String nome, String sexo, String coren, String nacionalidade, Date dtNasc, Date dtAdmissao,
+	public Auxiliar(String nome, String sexo, String coren, String nacionalidade, Date dtNasc, Date dtAdmissao,
 			Date dtFormatura) {
 		this.nome=nome;
 		this.coren=coren;

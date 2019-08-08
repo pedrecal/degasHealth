@@ -2,12 +2,14 @@ package facade;
 
 import profissionais.Medicos;
 import profissionais.Enfermeiros;
+import profissionais.Auxiliares;
 
 
 public class Facade {
 	
 	Medicos medicos = new Medicos();
 	Enfermeiros enfermeiros= new Enfermeiros();
+	Auxiliares auxiliares= new Auxiliares();
 
 	/**
 	 * This method inserts a medic into the system
@@ -51,4 +53,18 @@ public class Facade {
 		return enfermeiros.alteraEnfermeiro(coren, coluna, novoValor);
 	}
 
+	public String novoAuxiliar(String nome, String sexo, String coren, String nacionalidade, String dtNasc,
+			String dtAdmissao, String dtFormatura) {
+
+		return auxiliares.novoAuxiliar(nome, sexo, coren, nacionalidade, dtNasc,
+			dtAdmissao, dtFormatura);
+	}
+
+	public String encontraAuxiliar(String atributo) {
+		return auxiliares.encontraAuxiliar(atributo);
+	}
+
+	public String alteraAuxiliar(String coren, String coluna, String novoValor) {
+		return auxiliares.alteraAuxiliar(coren, coluna, novoValor);
+	}
 }
